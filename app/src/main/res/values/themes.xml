@@ -45,4 +45,5 @@
         <item name="android:navigationBarColor">@color/primaryColor</item>
         <!-- Customize your theme here. -->
     </style>
+
 </resources>
