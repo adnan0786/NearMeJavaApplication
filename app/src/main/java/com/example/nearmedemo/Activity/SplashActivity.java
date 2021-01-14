@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
-import com.example.nearmedemo.MainActivity;
 import com.example.nearmedemo.R;
 import com.google.firebase.auth.FirebaseAuth;
 
