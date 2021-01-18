@@ -4,4 +4,9 @@
     <string name="API_KEY">Your Api Key</string>
 
     <string name="login_string">Already have an account? <b>Login here</b></string>
+
+    <string name="open_navigation_drawer">Open Drawer</string>
+    <string name="close_navigation_drawer">Open Drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
