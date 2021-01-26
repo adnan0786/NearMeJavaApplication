@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,6 +40,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+import  com.example.nearmedemo.Fragments.SettingsFragmentDirections;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -74,6 +76,23 @@ public class SettingsFragment extends Fragment {
 
         binding.txtUsername.setOnClickListener(username -> {
             usernameDialog();
+        });
+
+        binding.cardEmail.setOnClickListener(view -> {
+            SettingsFragmentDirections.ActionBtnSettingToEmailConfirmationFragment directions =
+                    SettingsFragmentDirections.actionBtnSettingToEmailConfirmationFragment();
+
+            Navigation.findNavController(getView()).navigate(directions);
+        });
+
+        binding.cardPassword.setOnClickListener(view -> {
+
+            SettingsFragmentDirections.ActionBtnSettingToEmailConfirmationFragment directions =
+                    SettingsFragmentDirections.actionBtnSettingToEmailConfirmationFragment();
+            directions.setIsPassword(true);
+
+            Navigation.findNavController(getView()).navigate(directions);
+
         });
 
 

@@ -14,10 +14,43 @@
         android:id="@+id/btnSetting"
         android:name="com.example.nearmedemo.Fragments.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_btnSetting_to_emailConfirmationFragment"
+            app:destination="@id/emailConfirmationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/btnSavedPlaces"
         android:name="com.example.nearmedemo.Fragments.SavedPlacesFragment"
         android:label="fragment_saved_places"
         tools:layout="@layout/fragment_saved_places" />
+    <fragment
+        android:id="@+id/emailConfirmationFragment"
+        android:name="com.example.nearmedemo.Fragments.EmailConfirmationFragment"
+        android:label="fragment_email_confirmation"
+        tools:layout="@layout/fragment_email_confirmation">
+
+        <argument
+            android:name="isPassword"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_emailConfirmationFragment_to_passwordChangeFragment"
+            app:destination="@id/passwordChangeFragment"
+            app:popUpTo="@id/btnSetting" />
+        <action
+            android:id="@+id/action_emailConfirmationFragment_to_emailChangeFragment"
+            app:destination="@id/emailChangeFragment"
+            app:popUpTo="@id/btnSetting" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailChangeFragment"
+        android:name="com.example.nearmedemo.Fragments.EmailChangeFragment"
+        android:label="fragment_email_change"
+        tools:layout="@layout/fragment_email_change" />
+    <fragment
+        android:id="@+id/passwordChangeFragment"
+        android:name="com.example.nearmedemo.Fragments.PasswordChangeFragment"
+        android:label="fragment_password_change"
+        tools:layout="@layout/fragment_password_change" />
 </navigation>
