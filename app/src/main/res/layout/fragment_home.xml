@@ -1,17 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <fragment
+        android:id="@+id/homeMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinate"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:elevation="10dp"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:boxStrokeColor="@color/white"
+            app:boxStrokeWidth="0dp"
+            app:endIconMode="clear_text"
+            app:hintEnabled="false"
+            app:layout_anchor="@id/view"
+            app:layout_anchorGravity="bottom|center">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPlaceName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/primaryColor"
+                android:hint="Search Place"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColorHint="@color/itemTextColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/map_background"
+            android:elevation="5dp" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <HorizontalScrollView
+        android:id="@+id/placesList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/coordinate"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/placesGroup"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true"
+            app:singleSelection="true" />
+
+    </HorizontalScrollView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnMapType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textStyle="bold"
-        android:textSize="50dp"
-        android:text="Home Fragment" />
+        android:layout_below="@id/placesList"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="15dp"
+        android:src="@drawable/ic_map_type"
+        app:backgroundTint="@color/white"
+        app:fabCustomSize="40dp"
+        app:tint="@color/primaryColor" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/enableTraffic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnMapType"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_traffic"
+        app:backgroundTint="@color/white"
+        app:fabCustomSize="40dp"
+        app:tint="@color/itemTextColor" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/currentLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enableTraffic"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="15dp"
+        android:src="@drawable/ic_my_location"
+        app:backgroundTint="@color/white"
+        app:fabCustomSize="50dp"
+        app:tint="@color/primaryColor" />
+
 
 </RelativeLayout>
