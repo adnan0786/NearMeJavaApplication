@@ -1,5 +1,10 @@
 package com.example.nearmedemo.Model;
 
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -53,5 +58,10 @@ public class PhotoModel {
 
     public void setWidth(Integer width) {
         this.width = width;
+    }
+
+    @BindingAdapter("loadImage")
+    public static void loadImage(ImageView view, String image) {
+        Glide.with(view.getContext()).load(image).into(view);
     }
 }
