@@ -1,5 +1,6 @@
 package com.example.nearmedemo.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.nearmedemo.Activity.DirectionActivity;
 import com.example.nearmedemo.R;
 import com.example.nearmedemo.SavedLocationInterface;
 import com.example.nearmedemo.SavedPlaceModel;
@@ -129,7 +131,18 @@ public class SavedPlacesFragment extends Fragment implements SavedLocationInterf
 
     @Override
     public void onLocationClick(SavedPlaceModel savedPlaceModel) {
-        Toast.makeText(requireContext(), "place CLicked", Toast.LENGTH_SHORT).show();
+
+        if (savedPlaceModel.getLat() != null && savedPlaceModel.getLng() != null) {
+            Intent intent = new Intent(requireContext(), DirectionActivity.class);
+            intent.putExtra("placeId", savedPlaceModel.getPlaceId());
+            intent.putExtra("lat", savedPlaceModel.getLat());
+            intent.putExtra("lng", savedPlaceModel.getLng());
+
+            startActivity(intent);
+
+        } else {
+            Toast.makeText(requireContext(), "Location Not Found", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -141,4 +154,5 @@ public class SavedPlacesFragment extends Fragment implements SavedLocationInterf
             this.binding = binding;
         }
     }
+
 }

@@ -1,7 +1,7 @@
 package com.example.nearmedemo;
 
-import com.example.nearmedemo.Model.GeometryModel;
-import com.example.nearmedemo.Model.PhotoModel;
+import com.example.nearmedemo.Model.GooglePlaceModel.GeometryModel;
+import com.example.nearmedemo.Model.GooglePlaceModel.PhotoModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

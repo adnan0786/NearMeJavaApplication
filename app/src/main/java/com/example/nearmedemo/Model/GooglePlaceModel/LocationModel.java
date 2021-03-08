@@ -1,4 +1,4 @@
-package com.example.nearmedemo.Model;
+package com.example.nearmedemo.Model.GooglePlaceModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

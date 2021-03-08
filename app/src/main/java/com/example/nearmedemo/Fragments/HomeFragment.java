@@ -3,6 +3,7 @@ package com.example.nearmedemo.Fragments;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -28,11 +29,12 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import com.example.nearmedemo.Activity.DirectionActivity;
 import com.example.nearmedemo.Adapter.GooglePlaceAdapter;
 import com.example.nearmedemo.Adapter.InfoWindowAdapter;
 import com.example.nearmedemo.Constant.AllConstant;
 import com.example.nearmedemo.GooglePlaceModel;
-import com.example.nearmedemo.Model.GoogleResponseModel;
+import com.example.nearmedemo.Model.GooglePlaceModel.GoogleResponseModel;
 import com.example.nearmedemo.NearLocationInterface;
 import com.example.nearmedemo.Permissions.AppPermissions;
 import com.example.nearmedemo.PlaceModel;
@@ -430,6 +432,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
                                     googlePlaceModelList.clear();
                                     googlePlaceAdapter.setGooglePlaceModels(googlePlaceModelList);
                                     radius += 1000;
+                                    Log.d("TAG", "onResponse: "+radius);
                                     getPlaces(placeName);
 
                                 }
@@ -615,7 +618,17 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
 
     @Override
     public void onDirectionClick(GooglePlaceModel googlePlaceModel) {
-        Toast.makeText(requireContext(), "Direction Clicked", Toast.LENGTH_SHORT).show();
+
+        String placeId = googlePlaceModel.getPlaceId();
+        Double lat = googlePlaceModel.getGeometry().getLocation().getLat();
+        Double lng = googlePlaceModel.getGeometry().getLocation().getLng();
+
+        Intent intent = new Intent(requireContext(), DirectionActivity.class);
+        intent.putExtra("placeId", placeId);
+        intent.putExtra("lat", lat);
+        intent.putExtra("lng", lng);
+
+        startActivity(intent);
 
     }
 

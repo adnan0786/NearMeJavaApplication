@@ -1,4 +1,4 @@
-package com.example.nearmedemo.Model;
+package com.example.nearmedemo.Model.GooglePlaceModel;
 
 import android.widget.ImageView;
 

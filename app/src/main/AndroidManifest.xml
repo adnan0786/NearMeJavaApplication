@@ -17,6 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NearMeDemo">
+        <activity android:name=".Activity.DirectionActivity"
+            android:theme="@style/ActionBarTheme"
+            ></activity>
         <activity android:name=".Activity.ForgetActivity" />
         <activity android:name=".Activity.SignUpActivity" />
         <activity android:name=".Activity.LoginActivity" />
