@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/btnSetting"
         android:name="com.example.nearmedemo.Fragments.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="Saved Places"
         tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_btnSetting_to_emailConfirmationFragment"

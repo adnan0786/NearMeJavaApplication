@@ -56,7 +56,7 @@ public class SettingsFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
@@ -91,7 +91,7 @@ public class SettingsFragment extends Fragment {
                     SettingsFragmentDirections.actionBtnSettingToEmailConfirmationFragment();
             directions.setIsPassword(true);
 
-            Navigation.findNavController(getView()).navigate(directions);
+            Navigation.findNavController(requireView()).navigate(directions);
 
         });
 

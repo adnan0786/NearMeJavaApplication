@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import com.example.nearmedemo.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.maps.model.Unit;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -33,5 +37,11 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         }, 3000);
+
+
     }
+
+
+
+
 }

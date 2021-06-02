@@ -388,7 +388,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
             }
         }
     }
-
     private void getPlaces(String placeName) {
 
         if (isLocationPermissionOk) {

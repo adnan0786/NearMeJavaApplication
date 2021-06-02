@@ -72,62 +72,62 @@ public class SavedPlacesFragment extends Fragment implements SavedLocationInterf
     }
 
 
-    private void getSavedPlaces() {
-        loadingDialog.startLoading();
-        Query query = FirebaseDatabase.getInstance().getReference("Users")
-                .child(firebaseAuth.getUid()).child("Saved Locations");
+        private void getSavedPlaces() {
+            loadingDialog.startLoading();
+            Query query = FirebaseDatabase.getInstance().getReference("Users")
+                    .child(firebaseAuth.getUid()).child("Saved Locations");
 
-        FirebaseRecyclerOptions<String> options = new FirebaseRecyclerOptions.Builder<String>()
-                .setQuery(query, String.class).build();
+            FirebaseRecyclerOptions<String> options = new FirebaseRecyclerOptions.Builder<String>()
+                    .setQuery(query, String.class).build();
 
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<String, ViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull String savePlaceId) {
+            firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<String, ViewHolder>(options) {
+                @Override
+                protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull String savePlaceId) {
 
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Places").child(savePlaceId);
-                reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Places").child(savePlaceId);
+                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
 
-                            SavedPlaceModel savedPlaceModel = snapshot.getValue(SavedPlaceModel.class);
-                            holder.binding.setSavedPlaceModel(savedPlaceModel);
-                            holder.binding.setListener(savedLocationInterface);
+                                SavedPlaceModel savedPlaceModel = snapshot.getValue(SavedPlaceModel.class);
+                                holder.binding.setSavedPlaceModel(savedPlaceModel);
+                                holder.binding.setListener(savedLocationInterface);
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
 
-            }
+                }
 
-            @NonNull
-            @Override
-            public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                SavedItemLayoutBinding binding = DataBindingUtil.inflate(LayoutInflater.from(requireContext()),
-                        R.layout.saved_item_layout, parent, false);
-                return new ViewHolder(binding);
-            }
-        };
+                @NonNull
+                @Override
+                public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                    SavedItemLayoutBinding binding = DataBindingUtil.inflate(LayoutInflater.from(requireContext()),
+                            R.layout.saved_item_layout, parent, false);
+                    return new ViewHolder(binding);
+                }
+            };
 
-        binding.savedRecyclerView.setAdapter(firebaseRecyclerAdapter);
-        loadingDialog.stopLoading();
-    }
+            binding.savedRecyclerView.setAdapter(firebaseRecyclerAdapter);
+            loadingDialog.stopLoading();
+        }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        firebaseRecyclerAdapter.startListening();
-    }
+        @Override
+        public void onResume() {
+            super.onResume();
+            firebaseRecyclerAdapter.startListening();
+        }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        firebaseRecyclerAdapter.stopListening();
-    }
+        @Override
+        public void onPause() {
+            super.onPause();
+            firebaseRecyclerAdapter.stopListening();
+        }
 
     @Override
     public void onLocationClick(SavedPlaceModel savedPlaceModel) {
