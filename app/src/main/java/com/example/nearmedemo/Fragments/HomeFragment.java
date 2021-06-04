@@ -388,6 +388,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
             }
         }
     }
+
     private void getPlaces(String placeName) {
 
         if (isLocationPermissionOk) {
@@ -425,13 +426,17 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
 
                                     googlePlaceAdapter.setGooglePlaceModels(googlePlaceModelList);
 
+                                } else if (response.body().getError() != null) {
+                                    Snackbar.make(binding.getRoot(),
+                                            response.body().getError(),
+                                            Snackbar.LENGTH_LONG).show();
                                 } else {
 
                                     mGoogleMap.clear();
                                     googlePlaceModelList.clear();
                                     googlePlaceAdapter.setGooglePlaceModels(googlePlaceModelList);
                                     radius += 1000;
-                                    Log.d("TAG", "onResponse: "+radius);
+                                    Log.d("TAG", "onResponse: " + radius);
                                     getPlaces(placeName);
 
                                 }
