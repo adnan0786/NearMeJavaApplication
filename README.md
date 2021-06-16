@@ -1,5 +1,3 @@
-# NearMeDemo
-
 # App Features :                                                                                              
  1:   Beautiful Design                                                                                        
  2:   Login, SignUp & Forget                                                                                  
